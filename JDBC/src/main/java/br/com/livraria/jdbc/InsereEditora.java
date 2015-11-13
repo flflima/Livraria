@@ -29,9 +29,12 @@ public class InsereEditora
 			System.out.println("Digite o email da editora: ");
 			String email = entrada.nextLine();
 			
-			String sql = "INSERT INTO Editora (nome, email) VALUES ('" + nome + "', '" + email + "')";
+			String sql = "INSERT INTO Editora (nome, email) VALUES (?, ?)";
 			
 			PreparedStatement comando = (PreparedStatement) conexao.prepareStatement(sql);
+			
+			comando.setString(1, nome);
+			comando.setString(2, email);
 			
 			System.out.println("Executando comando...");
 			comando.execute();
