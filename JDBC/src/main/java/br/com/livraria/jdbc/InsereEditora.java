@@ -9,6 +9,7 @@ import com.mysql.jdbc.PreparedStatement;
 public class InsereEditora 
 {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) 
 	{
 		String stringDeConexao = "jdbc:mysql://localhost:3306/livraria";
