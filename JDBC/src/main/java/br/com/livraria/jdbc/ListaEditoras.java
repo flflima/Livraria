@@ -1,7 +1,8 @@
 package br.com.livraria.jdbc;
 
-import java.sql.DriverManager;
 import java.sql.ResultSet;
+
+import br.com.livraria.jdbc.factory.ConnectionFactory;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -11,14 +12,10 @@ public class ListaEditoras
 
 	public static void main(String[] args) 
 	{
-		String stringDeConexao = "jdbc:mysql://localhost:3306/livraria";
-		String usuario = "root";
-		String senha = "admin";
-
 		try 
 		{
 			System.out.println("Abrindo conexão...");
-			Connection conexao = (Connection) DriverManager.getConnection(stringDeConexao, usuario, senha);
+			Connection conexao = ConnectionFactory.createConnection();
 			
 			String sql = "SELECT * FROM Editora";
 			

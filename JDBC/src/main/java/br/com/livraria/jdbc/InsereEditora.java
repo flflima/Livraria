@@ -1,7 +1,8 @@
 package br.com.livraria.jdbc;
 
-import java.sql.DriverManager;
 import java.util.Scanner;
+
+import br.com.livraria.jdbc.factory.ConnectionFactory;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -12,16 +13,12 @@ public class InsereEditora
 	@SuppressWarnings("resource")
 	public static void main(String[] args) 
 	{
-		String stringDeConexao = "jdbc:mysql://localhost:3306/livraria";
-		String usuario = "root";
-		String senha = "admin";
-		
 		Scanner entrada = new Scanner(System.in);
 		
 		try 
 		{
 			System.out.println("Abrindo conexão...");
-			Connection conexao = (Connection) DriverManager.getConnection(stringDeConexao, usuario, senha);
+			Connection conexao = ConnectionFactory.createConnection();
 			
 			System.out.println("Digite o nome da editora: ");
 			String nome = entrada.nextLine();
