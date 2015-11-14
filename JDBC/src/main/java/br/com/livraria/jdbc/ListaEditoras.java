@@ -27,7 +27,7 @@ public class ListaEditoras
 			System.out.println("Resultados encontrados: \n");
 			while(resultado.next())
 			{
-				System.out.printf("%d : %s - %s\n", 
+				System.out.printf("%d : %s \t- \t%s\n", 
 									resultado.getInt("id"),
 									resultado.getString("nome"),
 									resultado.getString("email"));
