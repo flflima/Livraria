@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import br.com.livraria.entidade.Editora;
+import br.com.livraria.repositorio.EditoraRepository;
 
 public class InsereEditoraComJPA 
 {
@@ -18,6 +19,8 @@ public class InsereEditoraComJPA
 		
 		EntityManager manager = factory.createEntityManager();
 		
+		EditoraRepository repository = new EditoraRepository(manager);
+		
 		Editora novaEditora = new Editora();
 		
 		Scanner entrada = new Scanner(System.in);
@@ -28,7 +31,7 @@ public class InsereEditoraComJPA
 		System.out.println("Digite o email da editora: ");
 		novaEditora.setEmail(entrada.nextLine());
 		
-		manager.persist(novaEditora);
+		repository.adiciona(novaEditora);
 		
 		manager.getTransaction().begin();
 		manager.getTransaction().commit();

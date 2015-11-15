@@ -5,23 +5,22 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 import br.com.livraria.entidade.Editora;
+import br.com.livraria.repositorio.EditoraRepository;
 
 public class ListaEditoraComJPA 
 {
 
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) 
 	{
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("livraria-pu");
 		
 		EntityManager manager = factory.createEntityManager();
 		
-		Query query = (Query) manager.createQuery("SELECT e FROM Editora e");
+		EditoraRepository repository = new EditoraRepository(manager);
 		
-		List<Editora> editoras = query.getResultList();
+		List<Editora> editoras = repository.buscaTodas();
 		
 		for (Editora editora : editoras) 
 		{
